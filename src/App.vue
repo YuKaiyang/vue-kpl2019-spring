@@ -1,30 +1,23 @@
 <template>
   <div id="app">
     <h1>KPL2019春季赛</h1>
-    <Select :list="top" :data="data"/>
+    <Select :listE="topE" :listW="topW" :data="data"/>
   </div>
 </template>
 
 <script>
 import Select from "./components/Select.vue";
 
-const list = [
+const listE = [
   "eStarPro",
   "RNG.M",
   "EDG.M",
   "VG",
   "QGhappy",
   "BA黑凤梨",
-  "TOPM",
-  "RW侠",
-  "GK",
-  "Hero久竞",
-  "WE",
-  "XQ",
-  "YTG",
-  "TS",
-  "JC"
+  "TOPM"
 ];
+const listW = ["RW侠", "GK", "Hero久竞", "WE", "XQ", "YTG", "TS", "JC"];
 
 const data = [
   { time: "20190306T180000", Hero久竞: 3, QGhappy: 1 },
@@ -96,24 +89,43 @@ const data = [
   { time: "20190413T150000", YTG: 0, "RNG.M": 3 },
   { time: "20190413T180000", BA黑凤梨: 3, TOPM: 2 },
   { time: "20190413T200000", eStarPro: 3, Hero久竞: 1 },
-  { time: "20190414T150000", "EDG.M": 1, GK: 3 }
+  { time: "20190414T150000", "EDG.M": 1, GK: 3 },
+  { time: "20190414T180000", JC: 2, WE: 3 }
 ];
 
-let top = [];
-list.forEach(key => {
+let topE = [];
+let topW = [];
+listE.forEach(key => {
   let win = 0;
   data.forEach(obj => {
     if (obj[key] == 3) {
       win++;
     }
   });
-  top.push({
+  topE.push({
     name: key,
-    win
+    win,
+    title: key + "-east"
+  });
+});
+listW.forEach(key => {
+  let win = 0;
+  data.forEach(obj => {
+    if (obj[key] == 3) {
+      win++;
+    }
+  });
+  topW.push({
+    name: key,
+    win,
+    title: key + "-west"
   });
 });
 
-top.sort((a, b) => {
+topE.sort((a, b) => {
+  return b.win - a.win;
+});
+topW.sort((a, b) => {
   return b.win - a.win;
 });
 
@@ -123,7 +135,7 @@ export default {
     Select
   },
   data: function() {
-    return { top, data };
+    return { topE, topW, data };
   }
 };
 </script>
