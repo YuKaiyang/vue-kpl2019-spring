@@ -1,4 +1,4 @@
-# wzry
+# KPL2019春季赛目前各队的战绩，竞猜时的参考
 
 ## Project setup
 ```
