@@ -17,9 +17,18 @@
       </div>
     </div>
     <div class="count">
-      <span>胜 {{count.win}}</span>
+      <span>
+        胜
+        <span class="win">{{count.win}}</span>
+      </span>
       <span class="dash">:</span>
       <span>负 {{count.lose}}</span>
+      <div>
+        还剩
+        <span class="win">{{14-list.length}}</span>
+        场, 最高
+        <span class="win">{{count.win + 14-list.length}}</span>分
+      </div>
       <div>
         <span>净胜局</span>
         <span class="dash">:</span>

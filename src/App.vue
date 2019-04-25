@@ -112,7 +112,9 @@ let topE = []
 let topW = []
 listE.forEach(key => {
   let win = 0
+  let count = 0
   data.forEach(obj => {
+    count += obj[key]
     if (obj[key] == 3) {
       win++
     }
@@ -121,6 +123,7 @@ listE.forEach(key => {
     name: key,
     win,
     title: key + '-east',
+    count,
   })
 })
 listW.forEach(key => {
@@ -138,10 +141,18 @@ listW.forEach(key => {
 })
 
 topE.sort((a, b) => {
-  return b.win - a.win
+  if (b.win == a.win) {
+    return b.count - a.count
+  } else {
+    return b.win - a.win
+  }
 })
 topW.sort((a, b) => {
-  return b.win - a.win
+  if (b.win == a.win) {
+    return b.count - a.count
+  } else {
+    return b.win - a.win
+  }
 })
 
 export default {
