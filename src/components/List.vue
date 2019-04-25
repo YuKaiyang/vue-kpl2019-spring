@@ -30,49 +30,49 @@
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment'
 
 export default {
-  name: "List",
+  name: 'List',
   props: {
     data: Array,
-    name: String
+    name: String,
   },
   computed: {
     list: function() {
-      const res = [];
+      const res = []
       this._props.data.forEach(obj => {
         for (let key in obj) {
           if (key == this.name) {
-            obj.timeB = moment(obj.time).format("YYYY-MM-DD H点");
-            res.push(obj);
+            obj.timeB = moment(obj.time).format('YYYY-MM-DD H点')
+            res.push(obj)
           }
         }
-      });
-      return res;
+      })
+      return res
     },
     count: function() {
-      let win = 0;
-      let lose = 0;
-      let score = 0;
+      let win = 0
+      let lose = 0
+      let score = 0
       this.list.forEach(obj => {
         for (let key in obj) {
           if (key == this.name) {
             if (obj[key] == 3) {
-              win++;
+              win++
             } else {
-              lose++;
+              lose++
             }
-            score += obj[key];
-          } else if (key != "time" && key != "timeB") {
-            score -= obj[key];
+            score += obj[key]
+          } else if (key != 'time' && key != 'timeB') {
+            score -= obj[key]
           }
         }
-      });
-      return { win, lose, score };
-    }
-  }
-};
+      })
+      return { win, lose, score }
+    },
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -107,7 +107,7 @@ export default {
   margin-top: 20px;
 }
 .time {
-  position: absolute;
-  left: 34%;
+  display: inline-block;
+  margin-right: 20px;
 }
 </style>

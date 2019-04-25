@@ -12,43 +12,43 @@
 </template>
 
 <script>
-import List from "./List.vue";
+import List from './List.vue'
 
 export default {
-  name: "Select",
+  name: 'Select',
   components: {
-    List
+    List,
   },
   props: {
     listE: Array,
     listW: Array,
-    data: Array
+    data: Array,
   },
   data: function() {
     return {
-      name: this._props.listE[0].name
-    };
+      name: this._props.listE[0].name,
+    }
   },
   computed: {
     list: function() {
-      return [...this._props.listE, ...this._props.listW];
+      return [...this._props.listE, ...this._props.listW]
     },
     rank: function() {
-      let index = 0;
+      let index = 0
       this._props.listE.forEach((v, i) => {
         if (v.name == this.name) {
-          index = `东部第${i + 1}`;
+          index = `东部第${i + 1}`
         }
-      });
+      })
       this._props.listW.forEach((v, i) => {
         if (v.name == this.name) {
-          index = `西部第${i + 1}`;
+          index = `西部第${i + 1}`
         }
-      });
-      return index;
-    }
-  }
-};
+      })
+      return index
+    },
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
