@@ -106,6 +106,8 @@ const data = [
   { time: '20190421T200000', XQ: 1, BA黑凤梨: 3 },
   { time: '20190424T180000', JC: 3, YTG: 2 },
   { time: '20190424T200000', eStarPro: 3, TS: 1 },
+  { time: '20190425T180000', WE: 3, XQ: 0 },
+  { time: '20190425T200000', 'RNG.M': 3, TOPM: 0 },
 ]
 
 let topE = []
@@ -128,7 +130,10 @@ listE.forEach(key => {
 })
 listW.forEach(key => {
   let win = 0
+  let count = 0
   data.forEach(obj => {
+    count += obj[key]
+    console.log(obj[key])
     if (obj[key] == 3) {
       win++
     }
@@ -137,11 +142,13 @@ listW.forEach(key => {
     name: key,
     win,
     title: key + '-west',
+    count,
   })
 })
 
 topE.sort((a, b) => {
   if (b.win == a.win) {
+    console.log(a, b)
     return b.count - a.count
   } else {
     return b.win - a.win
@@ -149,6 +156,7 @@ topE.sort((a, b) => {
 })
 topW.sort((a, b) => {
   if (b.win == a.win) {
+    console.log(a, b)
     return b.count - a.count
   } else {
     return b.win - a.win
