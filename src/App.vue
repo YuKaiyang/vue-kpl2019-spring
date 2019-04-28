@@ -108,60 +108,56 @@ const data = [
   { time: '20190424T200000', eStarPro: 3, TS: 1 },
   { time: '20190425T180000', WE: 3, XQ: 0 },
   { time: '20190425T200000', 'RNG.M': 3, TOPM: 0 },
+  { time: '20190426T180000', YTG: 3, VG: 2 },
+  { time: '20190426T200000', QGhappy: 2, TS: 3 },
+  { time: '20190427T150000', RW侠: 3, WE: 1 },
+  { time: '20190427T180000', TOPM: 1, JC: 3 },
+  { time: '20190427T200000', QGhappy: 3, XQ: 2 },
+  { time: '20190428T150000', RW侠: 0, YTG: 0 },
+  { time: '20190428T180000', TS: 0, 'EDG.M': 0 },
+  { time: '20190428T200000', BA黑凤梨: 0, VG: 0 },
 ]
 
 let topE = []
 let topW = []
-listE.forEach(key => {
-  let win = 0
-  let count = 0
-  data.forEach(obj => {
-    count += obj[key]
-    if (obj[key] == 3) {
-      win++
-    }
-  })
-  topE.push({
-    name: key,
-    win,
-    title: key + '-east',
-    count,
-  })
-})
-listW.forEach(key => {
-  let win = 0
-  let count = 0
-  data.forEach(obj => {
-    count += obj[key]
-    console.log(obj[key])
-    if (obj[key] == 3) {
-      win++
-    }
-  })
-  topW.push({
-    name: key,
-    win,
-    title: key + '-west',
-    count,
-  })
-})
 
-topE.sort((a, b) => {
-  if (b.win == a.win) {
-    console.log(a, b)
-    return b.count - a.count
-  } else {
-    return b.win - a.win
-  }
-})
-topW.sort((a, b) => {
-  if (b.win == a.win) {
-    console.log(a, b)
-    return b.count - a.count
-  } else {
-    return b.win - a.win
-  }
-})
+function cal(arr, tar, title) {
+  arr.forEach(key => {
+    let win = 0
+    let count = 0
+    data.forEach(obj => {
+      if (obj[key] == 3) {
+        win++
+      }
+      if (obj[key] != null) {
+        count += obj[key]
+        Object.keys(obj).forEach(k => {
+          if (k != 'time' && k != key) {
+            count -= obj[k]
+          }
+        })
+      }
+    })
+    tar.push({
+      name: key,
+      win,
+      title: key + title,
+      count,
+    })
+  })
+
+  tar.sort((a, b) => {
+    if (b.win == a.win) {
+      console.log(a, b)
+      return b.count - a.count
+    } else {
+      return b.win - a.win
+    }
+  })
+}
+
+cal(listE, topE, '')
+cal(listW, topW, '')
 
 export default {
   name: 'app',
