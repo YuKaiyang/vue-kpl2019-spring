@@ -163,4 +163,6 @@ export const data2019A = [
   { time: '20191011T180000', XQ: 3, 'EDG.M': 1 },
   { time: '20191011T200000', TS: 1, eStarPro: 3 },
   { time: '20191012T150000', TES: 3, 'DYG.JC': 0 },
+  { time: '20191012T170000', GK: 0, Hero久竞: 3 },
+  { time: '20191012T200000', AG超玩会: 3, YTG: 1 },
 ]

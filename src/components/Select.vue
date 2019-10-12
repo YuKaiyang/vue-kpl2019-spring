@@ -24,13 +24,13 @@ export default {
     data: Array,
     title: String,
   },
-  data: function() {
+  data() {
     return {
       name: this.list[0].name,
     }
   },
   computed: {
-    rank: function() {
+    rank() {
       let index = 0
       this.list.forEach((v, i) => {
         if (v.name == this.name) {
@@ -43,7 +43,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 select {
   width: 150px;

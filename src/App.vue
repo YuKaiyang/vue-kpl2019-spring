@@ -27,7 +27,7 @@ const listW = [
 let topE = []
 let topW = []
 
-function cal(arr, tar, title) {
+function cal(arr, tar) {
   arr.forEach(key => {
     let win = 0
     let count = 0
@@ -47,7 +47,7 @@ function cal(arr, tar, title) {
     tar.push({
       name: key,
       win,
-      title: key + title,
+      title: key,
       count,
     })
   })
@@ -61,15 +61,15 @@ function cal(arr, tar, title) {
   })
 }
 
-cal(listE, topE, '')
-cal(listW, topW, '')
+cal(listE, topE)
+cal(listW, topW)
 
 export default {
   name: 'app',
   components: {
     Select,
   },
-  data: function() {
+  data() {
     return { topE, topW, data: data2019A }
   },
 }

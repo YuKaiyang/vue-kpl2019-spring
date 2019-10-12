@@ -48,19 +48,21 @@ export default {
     name: String,
   },
   computed: {
-    list: function() {
+    list() {
       const res = []
       this._props.data.forEach(obj => {
         for (let key in obj) {
           if (key == this.name) {
-            obj.timeB = moment(obj.time).format('YYYY-MM-DD H点')
-            res.push(obj)
+            const v = { ...obj }
+            v.timeB = moment(obj.time).format('YYYY-MM-DD H点')
+            delete v.time
+            res.push(v)
           }
         }
       })
       return res
     },
-    count: function() {
+    count() {
       let win = 0
       let lose = 0
       let score = 0
