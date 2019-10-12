@@ -23,7 +23,6 @@ const listW = [
   'TS',
   'DYG.JC',
 ]
-const data = data2019A
 
 let topE = []
 let topW = []
@@ -32,7 +31,7 @@ function cal(arr, tar, title) {
   arr.forEach(key => {
     let win = 0
     let count = 0
-    data.forEach(obj => {
+    data2019A.forEach(obj => {
       if (obj[key] == 3) {
         win++
       }
@@ -55,7 +54,6 @@ function cal(arr, tar, title) {
 
   tar.sort((a, b) => {
     if (b.win == a.win) {
-      console.log(a, b)
       return b.count - a.count
     } else {
       return b.win - a.win
@@ -72,7 +70,7 @@ export default {
     Select,
   },
   data: function() {
-    return { topE, topW, data }
+    return { topE, topW, data: data2019A }
   },
 }
 </script>
