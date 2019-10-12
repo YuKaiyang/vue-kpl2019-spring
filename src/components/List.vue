@@ -86,6 +86,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.container {
+  background-color: #797575;
+  color: #fff;
+  padding: 20px;
+}
+.lists {
+  height: 294px;
+}
 .inline {
   display: inline-block;
 }
@@ -97,15 +105,6 @@ export default {
 .win {
   font-weight: bolder;
   color: #ffd862;
-}
-
-.container {
-  background-color: #797575;
-  color: #fff;
-  padding: 20px 0;
-}
-.lists {
-  height: 294px;
 }
 .dash {
   display: inline-block;

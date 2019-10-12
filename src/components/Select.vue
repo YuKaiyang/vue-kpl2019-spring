@@ -7,7 +7,7 @@
       <span>目前排名</span>
       <span class="bold font-red">{{rank}}</span>
     </div>
-    <List :name="name" :data="data"/>
+    <List :name="name" :data="data" />
   </div>
 </template>
 
@@ -20,29 +20,21 @@ export default {
     List,
   },
   props: {
-    listE: Array,
-    listW: Array,
+    list: Array,
     data: Array,
+    title: String,
   },
   data: function() {
     return {
-      name: this._props.listE[0].name,
+      name: this.list[0].name,
     }
   },
   computed: {
-    list: function() {
-      return [...this._props.listE, ...this._props.listW]
-    },
     rank: function() {
       let index = 0
-      this._props.listE.forEach((v, i) => {
+      this.list.forEach((v, i) => {
         if (v.name == this.name) {
-          index = `东部第${i + 1}`
-        }
-      })
-      this._props.listW.forEach((v, i) => {
-        if (v.name == this.name) {
-          index = `西部第${i + 1}`
+          index = `${this.title}第${i + 1}`
         }
       })
       return index
